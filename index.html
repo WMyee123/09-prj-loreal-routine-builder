@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -20,12 +20,19 @@
       <!------- Header / Branding ------->
       <header class="site-header">
         <img src="img/loreal-logo.png" alt="L'Oréal Logo" class="logo" />
-        <h1 class="site-title">Smart Routine &amp; Product Advisor</h1>
+        <h1 class="site-title" id="siteTitle">
+          Smart Routine &amp; Product Advisor
+        </h1>
       </header>
+
+      <div class="language-section">
+        <label for="languageSelector" id="languageLabel">Language</label>
+        <select id="languageSelector" aria-label="Language selector"></select>
+      </div>
 
       <!-- Category Filter -->
       <div class="search-section">
-        <select id="categoryFilter">
+        <select id="categoryFilter" aria-label="Category filter">
           <option value="" disabled selected>Choose a Category</option>
           <option value="cleanser">Cleansers</option>
           <option value="moisturizer">Moisturizers & Treatments</option>
@@ -44,16 +51,37 @@
 
       <!-- Selected Products -->
       <div class="selected-products">
-        <h2>Selected Products</h2>
+        <h2 id="selectedProductsHeading">Selected Products</h2>
         <div id="selectedProductsList"></div>
-        <button id="generateRoutine" class="generate-btn">
-          <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Routine
-        </button>
+        <div class="generate-btn-group">
+          <button id="generateSkincareRoutine" class="generate-btn">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span class="generate-btn-text" id="skincareRoutineText"
+              >Skincare Routine</span
+            >
+          </button>
+          <button id="generateHaircareRoutine" class="generate-btn">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span class="generate-btn-text" id="haircareRoutineText"
+              >Haircare Routine</span
+            >
+          </button>
+        </div>
       </div>
 
       <!------- Chat Area ------->
       <section class="chatbox">
-        <h2>Let's Build Your Routine</h2>
+        <div class="chat-header">
+          <h2 id="chatHeading">Let's Build Your Routine</h2>
+          <button
+            id="clearConversationBtn"
+            class="clear-conversation-btn"
+            title="Clear conversation history"
+            aria-label="Clear conversation history"
+          >
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        </div>
         <div id="chatWindow" class="chat-window"></div>
 
         <form id="chatForm" class="chat-form">
@@ -62,7 +90,7 @@
             id="userInput"
             name="userInput"
             type="text"
-            placeholder="Ask me about products or routines…"
+            placeholder="Ask me about products or routines..."
             autocomplete="off"
             required
           />
@@ -75,18 +103,17 @@
 
       <!------- Footer Links ------->
       <footer class="site-footer">
-        <p>&copy; 2025 L'Oréal. All rights reserved.</p>
-        <nav>
+        <p id="footerCopyright">&copy; 2025 L'Oréal. All rights reserved.</p>
+        <nav aria-label="Footer links">
           <!-- These URLs are placeholders -->
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Use</a>
-          <a href="#">Contact</a>
+          <a href="#" id="privacyLink">Privacy Policy</a>
+          <a href="#" id="termsLink">Terms of Use</a>
+          <a href="#" id="contactLink">Contact</a>
         </nav>
       </footer>
     </div>
 
     <!-- secrets.js can be removed when using Cloudflare Workers for API requests -->
-    <script src="secrets.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
